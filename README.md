@@ -1,13 +1,15 @@
 Routific Ruby Gem
 =================
-
-[![Build Status](https://travis-ci.org/routific/routific-gem.svg?branch=master)](https://travis-ci.org/routific/routific-gem)
-
 This Ruby Gem assists users to easily access the [Routific API][1], which is a practical and scalable solution to the Vehicle Routing Problem.
 
   [1]: https://routific.com/developers
 
 Please refer to the full [documentation](https://docs.routific.com) for a detailled documentation of the API.
+
+Forked Notes
+----------
+Fix the following issues:
+* `NoMethodError: undefined method `response' for key not found: :ciphers>` (https://github.com/routific/routific-gem/issues/46)
 
 Installing
 ----------
