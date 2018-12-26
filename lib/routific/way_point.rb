@@ -6,7 +6,8 @@ module RoutificApi
       :arrival_time, :finish_time,
       :idle_time,
       :id, :break, :start, :end, :in_transit, # breaks
-      :too_late, :late_by # visit lateness
+      :too_late, :late_by, # visit lateness
+      :type # pickup/dropoff
     ]
 
     attr_reader *FIELDS

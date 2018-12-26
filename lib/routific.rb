@@ -1,5 +1,6 @@
 require_relative './routific/location'
 require_relative './routific/visit'
+require_relative './routific/pickup_drop_off_visit'
 require_relative './routific/break'
 require_relative './routific/vehicle'
 require_relative './routific/route'
@@ -29,6 +30,10 @@ class Routific
     visits[id] = RoutificApi::Visit.new(id, params)
   end
 
+  def set_pickup_dropoff_visit(id, params={})
+    visits[id] = RoutificApi::PickupDropOffVisit.new(params)
+  end
+
   # Sets a vehicle with the specified ID and parameters
   # id: vehicle ID
   # params: parameters for this vehicle
@@ -50,7 +55,7 @@ class Routific
     }
 
     data[:options] = options if options
-    result = Util.send_request("POST", "vrp", Routific.token, data)
+    result = Util.send_request("POST", endpoint, Routific.token, data)
     RoutificApi::Route.parse(result)
   end
 
@@ -59,10 +64,19 @@ class Routific
       visits: visits,
       fleet: fleet
     }
-
     data[:options] = options if options
-    result = Util.send_request("POST", "vrp-long", Routific.token, data)
+    result = Util.send_request("POST", "#{endpoint}-long", Routific.token, data)
     RoutificApi::Job.new(result["job_id"], data)
+  end
+
+  private
+
+  def endpoint
+    if visits.values.any? { |v| v.is_a?(RoutificApi::PickupDropOffVisit) }
+      "pdp"
+    else
+      "vrp"
+    end
   end
 
   class << self

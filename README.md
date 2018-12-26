@@ -8,9 +8,29 @@ Please refer to the full [documentation](https://docs.routific.com) for a detail
 
 Forked Notes
 ----------
-Fix the following issues:
+The following items have been fixed:
 * `NoMethodError: undefined method `response' for key not found: :ciphers>` (https://github.com/routific/routific-gem/issues/46)
-* `Visit#demand` becomes `Visit#load`
+* `Visit#demand` becomes `Visit#load` to match API specs
+* Introduced a new `Routific#set_pickup_dropoff_visit` method to handle visits that include delivery of items.
+```ruby
+routific.set_pickup_dropoff_visit("order_1", {
+  "pickup" => {
+    "location" => {
+      "name" => "6800 Cambie",
+      "lat" => 49.227107,
+      "lng" => -123.1163085,
+    }
+  },
+  "dropoff" => {
+    "location" => {
+      "name" => "7800 Cambie",
+      "lat" => 56.227107,
+      "lng" => -124.30343,
+      },
+    },
+  "load" => 1
+})
+```
 
 Installing
 ----------

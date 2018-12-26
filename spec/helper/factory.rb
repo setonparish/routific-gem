@@ -52,6 +52,26 @@ class Factory
   VISIT_PARAMS_MULTIPLE_TYPE["type"] = MULTIPLE_TYPE
   VISIT_MULTIPLE_TYPE = RoutificApi::Visit.new(VISIT_ID, VISIT_PARAMS_MULTIPLE_TYPE)
 
+  # Factory and constants for PickupAndDropOffVisit
+  PICKUP_DROP_OFF_VISIT_ID = Faker::Lorem.word
+  PICKUP_DROP_OFF_VISIT_DURATION = Faker::Number.digit
+  PICKUP_DROP_OFF_VISIT_LOAD = Faker::Number.digit
+  PICKUP_VISIT_LOCATION = {
+    "lat" => Faker::Address.latitude.to_f,
+    "lng" => Faker::Address.longitude.to_f,
+  }
+  DROP_OFF_VISIT_LOCATION = {
+    "lat" => Faker::Address.latitude.to_f,
+    "lng" => Faker::Address.longitude.to_f,
+  }
+  PICKUP_DROP_OFF_VISIT_PARAMS = {
+    "pickup"  => { "location" => PICKUP_VISIT_LOCATION },
+    "dropoff" => { "location" => DROP_OFF_VISIT_LOCATION },
+    "load"    => PICKUP_DROP_OFF_VISIT_LOAD,
+    "type"    => SINGLE_TYPE,
+  }
+  PICKUP_DROP_OFF_VISIT = RoutificApi::PickupDropOffVisit.new(PICKUP_DROP_OFF_VISIT_ID, PICKUP_DROP_OFF_VISIT_PARAMS)
+
   # Factoru and constants for break
   BREAK_ID = Faker::Lorem.word
   BREAK_START = "12:00"

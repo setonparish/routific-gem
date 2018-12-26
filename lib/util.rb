@@ -6,7 +6,7 @@ module Util
 
   ##
   # method: "GET", "POST"
-  # endpoint: "vrp", "vrp-long", "job"
+  # endpoint: "vrp", "vrp-long", "job", "pdp", "pdp-long"
   # token: if nil, raise ArgumentError; if missing "bearer", prefix
   # data: only for POST requests
   #
