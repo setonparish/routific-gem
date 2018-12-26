@@ -30,7 +30,7 @@ class Factory
   VISIT_START = "08:00"
   VISIT_END = "22:00"
   VISIT_DURATION = Faker::Number.digit
-  VISIT_DEMAND = Faker::Number.digit
+  VISIT_LOAD = Faker::Number.digit
   VISIT_LOCATION = {
     "lat" => Faker::Address.latitude.to_f,
     "lng" => Faker::Address.longitude.to_f,
@@ -41,7 +41,7 @@ class Factory
     "start"        => VISIT_START,
     "end"          => VISIT_END,
     "duration"     => VISIT_DURATION,
-    "demand"       => VISIT_DEMAND,
+    "load"       => VISIT_LOAD,
     "location"     => VISIT_LOCATION,
     "priority"     => VISIT_PRIORITY,
     "type"         => SINGLE_TYPE,

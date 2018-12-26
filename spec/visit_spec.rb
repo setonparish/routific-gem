@@ -20,8 +20,8 @@ describe RoutificApi::Location do
       expect(visit.duration).to eq(Factory::VISIT_DURATION)
     end
 
-    it "has demand" do
-      expect(visit.demand).to eq(Factory::VISIT_DEMAND)
+    it "has load" do
+      expect(visit.load).to eq(Factory::VISIT_LOAD)
     end
 
     it "has priority" do
@@ -56,8 +56,8 @@ describe RoutificApi::Location do
         expect(visitJSON["duration"]).to eq(Factory::VISIT_DURATION)
       end
 
-      it "has demand" do
-        expect(visitJSON["demand"]).to eq(Factory::VISIT_DEMAND)
+      it "has load" do
+        expect(visitJSON["load"]).to eq(Factory::VISIT_LOAD)
       end
 
       it "has priority" do
@@ -124,8 +124,8 @@ describe RoutificApi::Location do
         expect(visitJSON["duration"]).to be_nil
       end
 
-      it "does not have demand" do
-        expect(visitJSON["demand"]).to be_nil
+      it "does not have load" do
+        expect(visitJSON["load"]).to be_nil
       end
 
       it "does not have priority" do

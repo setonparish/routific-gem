@@ -1,7 +1,7 @@
 module RoutificApi
   # This class represents a location to be visited
   class Visit
-    attr_reader :id, :start, :end, :duration, :demand, :location, :priority,
+    attr_reader :id, :start, :end, :duration, :load, :location, :priority,
       :time_windows, :type
 
     # Constructor
@@ -10,7 +10,7 @@ module RoutificApi
     # start: the earliest time for this visit. Default value is 00:00, if not specified.
     # end: the latest time for this visit. Default value is 23:59, if not specified.
     # duration: the length of this visit in minutes
-    # demand: the capacity that this visit requires
+    # load: the capacity that this visit requires
     # location: the location of the visit. Instance of Location
     def initialize(id, params = {})
       validate(params)
@@ -18,7 +18,7 @@ module RoutificApi
       @start = params["start"]
       @end = params["end"]
       @duration = params["duration"]
-      @demand = params["demand"]
+      @load = params["load"]
       @location = RoutificApi::Location.new(params["location"])
       @priority = params["priority"]
       @type = params["type"]
@@ -38,7 +38,7 @@ module RoutificApi
       json_data["start"] = self.start if self.start
       json_data["end"] = self.end if self.end
       json_data["duration"] = self.duration if self.duration
-      json_data["demand"] = self.demand if self.demand
+      json_data["load"] = self.load if self.load
       json_data["location"] = self.location.as_json
       json_data["priority"] = self.priority if self.priority
       json_data["type"] = self.type if self.type

@@ -10,6 +10,7 @@ Forked Notes
 ----------
 Fix the following issues:
 * `NoMethodError: undefined method `response' for key not found: :ciphers>` (https://github.com/routific/routific-gem/issues/46)
+* `Visit#demand` becomes `Visit#load`
 
 Installing
 ----------
